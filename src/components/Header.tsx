@@ -1,6 +1,22 @@
 import "./Header.css";
 
-function Header() {
+interface NavLink {
+  label: string;
+  active?: boolean;
+}
+
+interface HeaderProps {
+  navLinks?: NavLink[];
+  actionLabel?: string;
+  onAction?: () => void;
+}
+
+function Header({ navLinks, actionLabel = "Logout", onAction }: HeaderProps) {
+  const links = navLinks ?? [
+    { label: "Overview", active: true },
+    { label: "Settings" },
+  ];
+
   return (
     <header className="header-section">
       <div className="header">
@@ -21,8 +37,14 @@ function Header() {
         </svg>
 
         <nav className="header-nav">
-          <span className="nav-link active">Overview</span>
-          <span className="nav-link">Settings</span>
+          {links.map((link) => (
+            <span
+              key={link.label}
+              className={`nav-link${link.active ? " active" : ""}`}
+            >
+              {link.label}
+            </span>
+          ))}
         </nav>
 
         <div className="header-actions">
@@ -43,8 +65,8 @@ function Header() {
               />
             </svg>
           </button>
-          <button className="logout-btn" type="button">
-            Logout
+          <button className="logout-btn" type="button" onClick={onAction}>
+            {actionLabel}
           </button>
         </div>
       </div>

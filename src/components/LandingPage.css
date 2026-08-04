@@ -1,0 +1,141 @@
+.landing-page {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.landing-page .header-section {
+  padding-top: 0;
+}
+
+.content-section {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.announcement {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 14px 4px 4px;
+  border-radius: 401px;
+  background: rgba(123, 123, 123, 0.2);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.announcement-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 58px;
+  background: #d9d9d9;
+  color: #000000;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.announcement-text {
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.headline-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headline {
+  width: 628px;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.subheadline {
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.cta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.cta-btn {
+  width: 143px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 14px;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cta-btn.primary {
+  background: #ffffff;
+  color: #000000;
+}
+
+.cta-btn.ghost {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.command-bar {
+  width: 889px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(33, 33, 33, 0.5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.command-text {
+  color: #ffffff;
+  opacity: 0.7;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.command-send {
+  flex-shrink: 0;
+}
