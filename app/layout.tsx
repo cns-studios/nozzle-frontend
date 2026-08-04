@@ -15,9 +15,13 @@ export default function RootLayout({
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
           rel="stylesheet"
