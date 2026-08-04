@@ -1,5 +1,3 @@
-import "./Header.css";
-
 interface NavLink {
   label: string;
   active?: boolean;

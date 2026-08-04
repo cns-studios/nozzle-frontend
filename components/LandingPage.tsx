@@ -1,5 +1,4 @@
 import Header from "./Header";
-import "./LandingPage.css";
 
 function LandingPage({ onLogin }: { onLogin?: () => void }) {
   return (

@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
-import Header from "./components/Header";
-import LandingPage from "./components/LandingPage";
-import Silk from "./components/Silk";
+import Header from "./Header";
+import LandingPage from "./LandingPage";
+import Silk from "./Silk";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
