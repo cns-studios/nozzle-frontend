@@ -7,9 +7,15 @@ interface HeaderProps {
   navLinks?: NavLink[];
   actionLabel?: string;
   onAction?: () => void;
+  disabled?: boolean;
 }
 
-function Header({ navLinks, actionLabel = "Logout", onAction }: HeaderProps) {
+function Header({
+  navLinks,
+  actionLabel = "Logout",
+  onAction,
+  disabled,
+}: HeaderProps) {
   const links = navLinks ?? [
     { label: "Overview", active: true },
     { label: "Settings" },
@@ -63,7 +69,12 @@ function Header({ navLinks, actionLabel = "Logout", onAction }: HeaderProps) {
               />
             </svg>
           </button>
-          <button className="logout-btn" type="button" onClick={onAction}>
+          <button
+            className="logout-btn"
+            type="button"
+            onClick={onAction}
+            disabled={disabled}
+          >
             {actionLabel}
           </button>
         </div>

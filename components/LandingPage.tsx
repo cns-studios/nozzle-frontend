@@ -1,12 +1,13 @@
 import Header from "./Header";
 
-function LandingPage({ onLogin }: { onLogin?: () => void }) {
+function LandingPage() {
   return (
     <main className="landing-page">
       <Header
         navLinks={[{ label: "Pricing" }, { label: "Features" }]}
-        actionLabel="Login with CNS"
-        onAction={onLogin}
+        actionLabel="Coming soon"
+        onAction={undefined}
+        disabled
       />
 
       <section className="content-section">
@@ -27,10 +28,10 @@ function LandingPage({ onLogin }: { onLogin?: () => void }) {
         </div>
 
         <div className="cta-row">
-          <button className="cta-btn primary" type="button">
+          <button className="cta-btn primary" type="button" disabled>
             Try for free
           </button>
-          <button className="cta-btn ghost" type="button">
+          <button className="cta-btn ghost" type="button" disabled>
             See pricing
           </button>
         </div>

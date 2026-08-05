@@ -111,6 +111,12 @@
   -webkit-backdrop-filter: blur(50px);
 }
 
+.cta-btn:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
 .command-bar {
   width: 889px;
   height: 68px;
@@ -138,4 +144,87 @@
 
 .command-send {
   flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .landing-page {
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .content-section {
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .announcement {
+    gap: 10px;
+  }
+
+  .announcement-text {
+    font-size: 12px;
+  }
+
+  .headline {
+    width: auto;
+    max-width: 100%;
+    font-size: 34px;
+  }
+
+  .subheadline {
+    font-size: 18px;
+  }
+
+  .cta-row {
+    width: 100%;
+    max-width: 420px;
+    gap: 12px;
+  }
+
+  .cta-btn {
+    width: auto;
+    min-width: 0;
+    flex: 1;
+    font-size: 15px;
+  }
+
+  .command-bar {
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .command-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-page {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .headline {
+    font-size: 28px;
+  }
+
+  .subheadline {
+    font-size: 16px;
+  }
+
+  .cta-btn {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .command-bar {
+    padding: 12px 14px;
+  }
+
+  .command-text {
+    font-size: 14px;
+  }
 }

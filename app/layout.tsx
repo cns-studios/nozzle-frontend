@@ -2,6 +2,21 @@ import "./globals.css";
 import "@/components/Header.css";
 import "@/components/LandingPage.css";
 import FaviconHandler from "@/components/FaviconHandler";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nozzle",
+  description:
+    "A coding agent that lives in your Discord. Select your GitHub repo, @mention nozzle to create tasks, and it'll submit PRs.",
+  metadataBase: new URL("https://nozzle.sh"),
+  openGraph: {
+    title: "Nozzle",
+    description:
+      "A coding agent that lives in your Discord. @mention nozzle to create tasks.",
+    type: "website",
+  },
+  robots: { index: true, follow: true },
+};
 
 export default function RootLayout({
   children,
