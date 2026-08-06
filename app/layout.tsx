@@ -1,6 +1,7 @@
 import "./globals.css";
 import "@/components/Header.css";
 import "@/components/LandingPage.css";
+import "@/components/Loader.css";
 import FaviconHandler from "@/components/FaviconHandler";
 import type { Metadata } from "next";
 

@@ -76,11 +76,15 @@ type SilkUniforms = Record<string, IUniform>;
 const SilkPlane = ({
   uniforms,
   meshRef,
+  onReady,
 }: {
   uniforms: Record<string, IUniform>;
   meshRef: RefObject<Mesh | null>;
+  onReady?: () => void;
 }) => {
   const { viewport } = useThree();
+  const frameCountRef = useRef(0);
+  const notifiedRef = useRef(false);
 
   useLayoutEffect(() => {
     if (meshRef.current) {
@@ -92,6 +96,14 @@ const SilkPlane = ({
     if (meshRef.current) {
       (meshRef.current.material as ShaderMaterial).uniforms.uTime.value +=
         0.1 * delta;
+    }
+
+    if (!notifiedRef.current) {
+      frameCountRef.current += 1;
+      if (frameCountRef.current >= 2) {
+        notifiedRef.current = true;
+        onReady?.();
+      }
     }
   });
 
@@ -113,6 +125,7 @@ interface SilkProps {
   color?: string;
   noiseIntensity?: number;
   rotation?: number;
+  onReady?: () => void;
 }
 
 function Silk({
@@ -121,6 +134,7 @@ function Silk({
   color = "#7B7481",
   noiseIntensity = 1.5,
   rotation = 0,
+  onReady,
 }: SilkProps) {
   const meshRef = useRef<Mesh>(null);
 
@@ -147,7 +161,7 @@ function Silk({
 
   return (
     <Canvas dpr={[1, 2]} frameloop="always">
-      <SilkPlane uniforms={uniforms} meshRef={meshRef} />
+      <SilkPlane uniforms={uniforms} meshRef={meshRef} onReady={onReady} />
     </Canvas>
   );
 }
