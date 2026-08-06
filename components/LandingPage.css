@@ -142,8 +142,30 @@
   text-overflow: ellipsis;
 }
 
+.command-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 4px;
+  vertical-align: middle;
+  background: #ffffff;
+  animation: command-caret-blink 1s steps(1) infinite;
+}
+
+@keyframes command-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .command-send {
   flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .command-caret {
+    animation: none;
+  }
 }
 
 @media (max-width: 1024px) {
