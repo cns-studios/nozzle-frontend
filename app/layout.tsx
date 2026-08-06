@@ -6,15 +6,20 @@ import FaviconHandler from "@/components/FaviconHandler";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nozzle",
+  title: "Nozzle - A coding agent that lives in your discord",
   description:
     "A coding agent that lives in your Discord. Select your GitHub repo, @mention nozzle to create tasks, and it'll submit PRs.",
-  metadataBase: new URL("https://nozzle.sh"),
+  metadataBase: new URL("https://nozzle.cns-studios.com"),
   openGraph: {
-    title: "Nozzle",
+    title: "Nozzle - A coding agent that lives in your discord",
     description:
       "A coding agent that lives in your Discord. @mention nozzle to create tasks.",
     type: "website",
+    images: [{ url: "/og_image.png", width: 1200, height: 630, alt: "Nozzle" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og_image.png"],
   },
   robots: { index: true, follow: true },
 };
