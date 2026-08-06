@@ -26,7 +26,3 @@ out
 *.sw?
 tsconfig.tsbuildinfo
 .env
-.env.*
-Dockerfile
-docker-compose.yml
-.dockerignore

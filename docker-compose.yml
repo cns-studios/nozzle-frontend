@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3974:3974"
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
