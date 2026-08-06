@@ -66,7 +66,14 @@ function CommandBar() {
   return (
     <div className="command-bar">
       <span className="command-text">
-        {text}
+        {text.startsWith(LOGO) ? (
+          <>
+            <span className="command-logo">{LOGO}</span>
+            <span className="command-message">{text.slice(LOGO.length)}</span>
+          </>
+        ) : (
+          text
+        )}
         <span className="command-caret" aria-hidden="true" />
       </span>
       <svg

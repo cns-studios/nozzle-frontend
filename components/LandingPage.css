@@ -133,13 +133,23 @@
 
 .command-text {
   color: #ffffff;
-  opacity: 0.7;
   font-family: "Jost", sans-serif;
   font-size: 20px;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.command-message {
+  opacity: 0.7;
+}
+
+.command-logo {
+  background: #292c51;
+  color: #a4b5f8;
+  border-radius: 8px;
+  padding: 2px 6px;
 }
 
 .command-caret {
