@@ -41,6 +41,12 @@
   text-decoration: underline;
 }
 
+.nav-link.disabled {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
 .header-actions {
   display: flex;
   justify-content: flex-end;
@@ -59,6 +65,15 @@
   background: transparent;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.theme-toggle:disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+}
+
+.theme-toggle:disabled svg path {
+  stroke: rgba(255, 255, 255, 0.5);
 }
 
 .logout-btn {

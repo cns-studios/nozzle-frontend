@@ -44,7 +44,7 @@ function Header({
           {links.map((link) => (
             <span
               key={link.label}
-              className={`nav-link${link.active ? " active" : ""}`}
+              className={`nav-link${link.active ? " active" : ""}${disabled ? " disabled" : ""}`}
             >
               {link.label}
             </span>
@@ -52,7 +52,12 @@ function Header({
         </nav>
 
         <div className="header-actions">
-          <button className="theme-toggle" type="button" aria-label="Toggle theme">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label="Toggle theme"
+            disabled={disabled}
+          >
             <svg
               width="24"
               height="24"
