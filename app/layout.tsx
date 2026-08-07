@@ -1,9 +1,10 @@
 import "./globals.css";
 import "@/components/Header.css";
 import "@/components/LandingPage.css";
-import "@/components/Loader.css";
+import "@/app/Loader.css";
 import FaviconHandler from "@/components/FaviconHandler";
 import type { Metadata } from "next";
+import Silkw from "@/components/silkw";
 
 export const metadata: Metadata = {
   title: "Nozzle - A coding agent that lives in your discord",
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+
   return (
     <html lang="en">
       <head>
@@ -50,6 +52,9 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/logoBlack.png" />
       </head>
       <body>
+      <div className="silk-bg">
+        <Silkw />
+      </div>
         <FaviconHandler />
         {children}
       </body>

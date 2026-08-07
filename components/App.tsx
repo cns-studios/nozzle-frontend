@@ -21,7 +21,8 @@ function App() {
         <Silk
           speed={5}
           scale={1}
-          color="#A855F7"
+          color="#c488fc"
+          bgColor="#FFFFFF"
           noiseIntensity={1.5}
           rotation={0}
           onReady={handleReady}

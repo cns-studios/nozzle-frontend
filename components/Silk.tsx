@@ -31,6 +31,7 @@ varying vec3 vPosition;
 
 uniform float uTime;
 uniform vec3  uColor;
+uniform vec3  uBgColor;
 uniform float uSpeed;
 uniform float uScale;
 uniform float uRotation;
@@ -65,7 +66,8 @@ void main() {
                                    0.02 * tOffset) +
                            sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
 
-  vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
+  vec3 finalColor = mix(uBgColor, uColor, pattern);
+  vec4 col = vec4(finalColor, 1.0) - rnd / 15.0 * uNoiseIntensity;
   col.a = 1.0;
   gl_FragColor = col;
 }
@@ -74,10 +76,10 @@ void main() {
 type SilkUniforms = Record<string, IUniform>;
 
 const SilkPlane = ({
-  uniforms,
-  meshRef,
-  onReady,
-}: {
+                     uniforms,
+                     meshRef,
+                     onReady,
+                   }: {
   uniforms: Record<string, IUniform>;
   meshRef: RefObject<Mesh | null>;
   onReady?: () => void;
@@ -95,7 +97,7 @@ const SilkPlane = ({
   useFrame((_, delta) => {
     if (meshRef.current) {
       (meshRef.current.material as ShaderMaterial).uniforms.uTime.value +=
-        0.1 * delta;
+          0.1 * delta;
     }
 
     if (!notifiedRef.current) {
@@ -108,14 +110,14 @@ const SilkPlane = ({
   });
 
   return (
-    <mesh ref={meshRef}>
-      <planeGeometry args={[1, 1, 1, 1]} />
-      <shaderMaterial
-        uniforms={uniforms}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-      />
-    </mesh>
+      <mesh ref={meshRef}>
+        <planeGeometry args={[1, 1, 1, 1]} />
+        <shaderMaterial
+            uniforms={uniforms}
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+        />
+      </mesh>
   );
 };
 
@@ -123,32 +125,35 @@ interface SilkProps {
   speed?: number;
   scale?: number;
   color?: string;
+  bgColor?: string;
   noiseIntensity?: number;
   rotation?: number;
   onReady?: () => void;
 }
 
 function Silk({
-  speed = 5,
-  scale = 1,
-  color = "#7B7481",
-  noiseIntensity = 1.5,
-  rotation = 0,
-  onReady,
-}: SilkProps) {
+                speed = 5,
+                scale = 1,
+                color = "#7B7481",
+                bgColor = "#000000",
+                noiseIntensity = 1.5,
+                rotation = 0,
+                onReady,
+              }: SilkProps) {
   const meshRef = useRef<Mesh>(null);
 
   const uniforms = useMemo<SilkUniforms>(
-    () => ({
-      uSpeed: { value: speed },
-      uScale: { value: scale },
-      uNoiseIntensity: { value: noiseIntensity },
-      uColor: { value: new Color(...hexToNormalizedRGB(color)) },
-      uRotation: { value: rotation },
-      uTime: { value: 0 },
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+      () => ({
+        uSpeed: { value: speed },
+        uScale: { value: scale },
+        uNoiseIntensity: { value: noiseIntensity },
+        uColor: { value: new Color(...hexToNormalizedRGB(color)) },
+        uBgColor: { value: new Color(...hexToNormalizedRGB(bgColor)) },
+        uRotation: { value: rotation },
+        uTime: { value: 0 },
+      }),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [],
   );
 
   useEffect(() => {
@@ -156,13 +161,14 @@ function Silk({
     uniforms.uScale.value = scale;
     uniforms.uNoiseIntensity.value = noiseIntensity;
     uniforms.uColor.value.setRGB(...hexToNormalizedRGB(color));
+    uniforms.uBgColor.value.setRGB(...hexToNormalizedRGB(bgColor));
     uniforms.uRotation.value = rotation;
-  }, [speed, scale, noiseIntensity, color, rotation, uniforms]);
+  }, [speed, scale, noiseIntensity, color, bgColor, rotation, uniforms]);
 
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
-      <SilkPlane uniforms={uniforms} meshRef={meshRef} onReady={onReady} />
-    </Canvas>
+      <Canvas dpr={[1, 2]} frameloop="always">
+        <SilkPlane uniforms={uniforms} meshRef={meshRef} onReady={onReady} />
+      </Canvas>
   );
 }
 
