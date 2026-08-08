@@ -7,20 +7,20 @@ Built with Next.js 15 (App Router), React 19, Three.js + React Three Fiber (cust
 ## Getting started
 
 ```bash
-npm install
-npm run dev
+pnpm i
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000.
 
 ## Scripts
 
-| Command         | Description                 |
-| --------------- | --------------------------- |
-| `npm run dev`   | Start the dev server        |
-| `npm run build` | Production build            |
-| `npm run start` | Serve the production build  |
-| `npm run lint`  | Lint with oxlint            |
+| Command        | Description                 |
+|----------------| --------------------------- |
+| `pnpm dev`     | Start the dev server        |
+| `pnpm build`   | Production build            |
+| `pnpm start`   | Serve the production build  |
+| `pnpm lint`    | Lint with oxlint            |
 
 ## Docker
 
@@ -33,5 +33,5 @@ Serves on port `3974` (see `Dockerfile` / `docker-compose.yml`). The image uses 
 ## Structure
 
 - `app/` — Next.js App Router entry (`page.tsx` renders `App`)
-- `components/` — LandingPage, Header, CommandBar, Silk (R3F shader background), Loader, FaviconHandler
+- `components/` — Header, CommandBar, Silk (R3F shader background), Loader, FaviconHandler
 - `src/` — unused placeholder for shared code
