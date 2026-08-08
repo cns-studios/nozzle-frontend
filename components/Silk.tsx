@@ -2,7 +2,7 @@
 
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useRef, useMemo, useLayoutEffect, useEffect, type RefObject } from "react";
+import { useRef, useMemo, useLayoutEffect, useEffect, useState, type RefObject } from "react";
 import { Color, type IUniform, type Mesh, type ShaderMaterial } from "three";
 
 const hexToNormalizedRGB = (hex: string): [number, number, number] => {
@@ -141,6 +141,7 @@ function Silk({
                 onReady,
               }: SilkProps) {
   const meshRef = useRef<Mesh>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   const uniforms = useMemo<SilkUniforms>(
       () => ({
@@ -165,8 +166,23 @@ function Silk({
     uniforms.uRotation.value = rotation;
   }, [speed, scale, noiseIntensity, color, bgColor, rotation, uniforms]);
 
+  // Handle page visibility changes to pause/resume animation
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // Initialize with current state
+    setIsVisible(!document.hidden);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   return (
-      <Canvas dpr={[1, 2]} frameloop="always">
+      <Canvas dpr={[1, 2]} frameloop={isVisible ? "always" : "never"}>
         <SilkPlane uniforms={uniforms} meshRef={meshRef} onReady={onReady} />
       </Canvas>
   );
