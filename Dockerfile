@@ -6,6 +6,12 @@ COPY package.json .
 COPY pnpm-lock.yaml .
 COPY pnpm-workspace.yaml .
 
+RUN npm install --global corepack@latest
+RUN corepack enable pnpm
+
+RUN pnpm i
+RUN pnpm approve-builds --all
+
 COPY next.config.ts .
 COPY tsconfig.json .
 COPY next-env.d.ts .
@@ -14,11 +20,6 @@ COPY components.json .
 COPY app ./app
 COPY components ./components
 
-RUN npm install --global corepack@latest
-RUN corepack enable pnpm
-
-RUN pnpm i
-RUN pnpm approve-builds --all
 RUN pnpm build
 
 FROM node:24-alpine AS runner

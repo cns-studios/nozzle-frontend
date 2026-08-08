@@ -1,6 +1,10 @@
+// @ts-ignore
 import "./globals.css";
+// @ts-ignore
 import "@/components/Header.css";
+// @ts-ignore
 import "@/components/LandingPage.css";
+// @ts-ignore
 import "@/app/Loader.css";
 import FaviconHandler from "@/components/FaviconHandler";
 import type { Metadata } from "next";
